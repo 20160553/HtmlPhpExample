@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <title>How to breed?</title>
+    <link rel="stylesheet" href="main.css">
+    <!-- CDN방식 jQuery 사용 선언 -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+    <!-- jQuery 분리. jQuery파일은 javascript 파일로 저장. -->
+    <script src="scripts/post.js?ver=0.0011"></script>
+    <style>
+        #post_title {
+            width: 100%;
+        }
+
+        #post_contents {
+            width: 100%;
+            height: 500px;
+        }
+
+        #post_register {
+            margin-top: 5px;
+            width: 100%;
+        }
+
+        #p_menu {
+            width: 100px;
+            height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="jb-container">
+        <div id="jb-header">
+            <a href="main.php"><img src="/img/how to breed.PNG" /></a><br />
+        </div>
+        <div id="jb-sidebar-left">
+            <h2>분류</h2>
+            <ul>
+                <li>포유류</li>
+                <li>조류</li>
+                <li>어류</li>
+                <li>파충류</li>
+                <li>양서류</li>
+            </ul>
+        </div>
+        <div id="jb-content">
+            <form method="post" enctype="multipart/form-data" action="_post.php">
+                <div id="post_title">
+                    제목
+                    <input type="text" id="post_title" name="title" /><br />
+                </div>
+                분류<br />
+                <select id='p_menu' name="menu">
+                    <option>포유류</option>
+                    <option>조류</option>
+                    <option>어류</option>
+                    <option>파충류</option>
+                    <option>양서류</option>
+                </select><br />
+                내용<br />
+                <input type="text" id="post_contents" name="content" /><br />
+                이미지 추가<br />
+                <input type="file" name="uimg"><br />
+                <input type="submit" id="post_register" value="등록">
+            </form>
+        </div>
+        <div id="jb-sidebar-right">
+            <div id="search">
+                <input id="search_box" />
+                <button id="post_search">검색</button>
+            </div>
+        </div>
+        <div id="jb-footer">
+            <p>Copyright</p>
+            pcs2686
+        </div>
+    </div>
+</body>
+
+</html>

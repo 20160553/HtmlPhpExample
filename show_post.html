@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <title>CSS</title>
+
+    <!-- CDN방식 jQuery 사용 선언 -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="scripts/post.js?ver=0.0010"></script>
+
+    <style>
+        body {}
+
+        #jb-container {
+            width: 940px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #bcbcbc;
+            background-color: rgb(40, 146, 40);
+        }
+
+        #jb-header {
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #bcbcbc;
+            background-color: white;
+        }
+
+        #jb-sidebar-left {
+            width: 160px;
+            padding: 20px;
+            margin-right: 20px;
+            margin-bottom: 20px;
+            float: left;
+            border: 1px solid #bcbcbc;
+            background-color: white;
+        }
+
+        #jb-content {
+            width: 450px;
+            padding: 20px;
+            margin-bottom: 20px;
+            float: left;
+            border: 1px solid #bcbcbc;
+            background-color: white;
+        }
+
+        #jb-sidebar-right {
+            float: right;
+        }
+
+        #search {
+            width: 160px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #bcbcbc;
+            background-color: white;
+        }
+
+        #search>input {
+            width: 100px;
+        }
+
+        #kind {
+            width: 160px;
+            padding: 20px;
+            margin-bottom: 20px;
+            float: right;
+            border: 1px solid #bcbcbc;
+            background-color: white;
+        }
+
+        #jb-footer {
+            clear: both;
+            padding: 20px;
+            border: 1px solid #bcbcbc;
+            background-color: white;
+        }
+
+        #jb-header a {
+            text-decoration: none;
+        }
+
+        #post_title {
+            width: 100%;
+        }
+
+        #post_text {
+            width: 100%;
+            height: 500px;
+        }
+
+        #comment {
+            width: 80%;
+            height: 18px;
+            margin-right: 5px;
+        }
+
+        .t_comment {
+            width: 100%;
+            background-color: greenyellow;
+            table-layout: fixed;
+            word-break: break-all;
+            border: 1px solid;
+            border-collapse: collapse;
+        }
+
+        .t_comment th,
+        td {
+            border: 1px solid;
+        }
+
+        .post_img {
+            width: 100%;
+            border: 1px solid black;
+        }
+
+        #search_btn {
+            width: 10px;
+        }
+
+        #delete_btn {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="jb-container">
+        <div id="jb-header">
+            <a href="main.php"><img src="/img/how to breed.PNG" /></a><br />
+            <script>
+                $(document).ready(function () {
+                    var cookie = decodeURIComponent(document.cookie);
+                    var cookie_ad = cookie.split(';');
+
+                    var btn = '';
+
+                    if (cookie_ad[1] != null) {
+                        btn += '<a href="logout.php">로그아웃</a>';
+                    } else {
+                        btn += '<a href = "login.html" > \
+                        로그인 </a>\
+                            <a href = "register.html">\
+                    회원가입\
+                        </a>';
+                    }
+                    $("#jb-header").append(btn);
+                });
+            </script>
+        </div>
+        <div id="jb-sidebar-left">
+            <h2>분류</h2>
+            <ul>
+                <a href="main.php?menu=포유류">
+                    <li>포유류</li>
+                </a>
+                <a href="main.php?menu=조류">
+                    <li>조류</li>
+                </a>
+                <a href="main.php?menu=어류">
+                    <li>어류</li>
+                </a>
+                <a href="main.php?menu=파충류">
+                    <li>파충류</li>
+                </a>
+                <a href="main.php?menu=양서류">
+                    <li>양서류</li>
+                </a>
+            </ul>
+        </div>
+        <div id="jb-content">
+            <div id="plain_text">
+                <script>
+                    Show_post();
+                </script>;
+            </div>
+            <br />
+            <div id="input_form">
+                <script>
+                    $(document).ready(function () {
+                        var url = location.href;
+                        var menu = (url.slice(url.indexOf('?') + 1, url.length)).split('=');
+                        var temp = '<form id="input_comment" method="post" action="write_comment.php?id=' +
+                            menu[1] + '">';
+                        temp += '<input id="comment" name="comment" />';
+                        temp += '<input type="submit" id="comment_register" value="댓글 등록" /></form>'
+                        $("#input_form").prepend(temp);
+                    });
+                </script>
+                <br />
+            </div>
+            <div id="comments"></div>
+        </div>
+        <div id="jb-sidebar-right">
+            <form id="search" method="get" action="main.php">
+                <input id="search_text" name="search_text" />
+                <input type="submit" id="search_btn" value="검색" />
+            </form>
+            <div id="kind">
+                <button id="post" onclick="Certified_login();">글쓰기</button>
+                <script>
+                    var cookie = decodeURIComponent(document.cookie);
+                    var cookie_ad = cookie.split(';');
+                    if (cookie_ad[1] != null) {
+                        var url = location.href;
+                        var menu = (url.slice(url.indexOf('?') + 1, url.length)).split('=');
+                        url = "delete_post.php?id=";
+                        url = url + menu[1];
+                        var btn_url = "<button id=\"delete_btn\" onclick=\"location.href='" + url + "'\">삭제</button>"
+                        url = "revise_post.html?id=";
+                        url = url + menu[1];
+                        btn_url += "<button id=\"revise_btn\" onclick=\"location.href='" + url + "'\">수정</button>"
+                        $("#kind").append(btn_url);
+                    }
+                </script>
+            </div>
+        </div>
+        <div id="jb-footer">
+            <p>Copyright</p>
+            pcs2686
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <title>How to breed?</title>
+    <link rel="stylesheet" href="main.css">
+    <!-- CDN방식 jQuery 사용 선언 -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+    <!-- jQuery 분리. jQuery파일은 javascript 파일로 저장. -->
+    <script src="scripts/post.js?ver=0.0011"></script>
+</head>
+
+<body>
+    <div id="jb-container">
+        <div id="jb-header">
+            <a href="main.php"><img src="/img/how to breed.PNG" /></a>
+        </div>
+        <div id="jb-sidebar-left">
+            <h2>분류</h2>
+            <ul>
+                <a href="main.php?menu=포유류">
+                    <li>포유류</li>
+                </a>
+                <a href="main.php?menu=조류">
+                    <li>조류</li>
+                </a>
+                <a href="main.php?menu=어류">
+                    <li>어류</li>
+                </a>
+                <a href="main.php?menu=파충류">
+                    <li>파충류</li>
+                </a>
+                <a href="main.php?menu=양서류">
+                    <li>양서류</li>
+                </a>
+            </ul>
+        </div>
+        <div id="jb-content">
+            <form method="post" action="login.php">
+                <input type="text" name="id" placeholder="아이디" /><br />
+                <input type="password" name="pass" placeholder="비밀번호" /><br />
+                <a href="register.html">회원가입</a>
+                <input type="submit" value="로그인">
+            </form>
+        </div>
+        <div id="jb-sidebar-right">
+            <form id="search" method="get" action="main.php">
+                <input id="search_text" name="search_text" />
+                <input type="submit" id="search_btn" value="검색" />
+            </form>
+            <div id="kind">
+                <button id="post" onclick="Certified_login();">글쓰기</button>
+            </div>
+        </div>
+        <div id="jb-footer">
+            <p>Copyright</p>
+        </div>
+    </div>
+</body>
+
+</html>
