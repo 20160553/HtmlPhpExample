@@ -2,11 +2,13 @@
 게시판 만들기 연습
 
 main.html (좌) 메뉴별 게시글 표시 (우) 메인페이지
+
 ![image](https://user-images.githubusercontent.com/53904156/125273982-72e9af80-e348-11eb-90ba-1cdaa94b0a20.png)
 
 
 
 회원가입 페이지, register.html (좌) 설계 (우) 구현 후
+
 ![image](https://user-images.githubusercontent.com/53904156/125300136-b6521700-e364-11eb-8b78-18696105f3c6.png)
 
 
